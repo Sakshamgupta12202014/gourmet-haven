@@ -1,10 +1,15 @@
+require('dotenv').config();
+
 const express = require("express")
 const app = express()
 const bodyparser = require('body-parser');
 const path = require('path');
 const mongoose = require("mongoose");
 const { time } = require("console");
-mongoose.connect("mongodb://localhost:27017/Restaurant")
+
+const port = process.env.PORT || 2000;
+
+mongoose.connect(process.env.MONGO_URI)
 
 
 
@@ -164,6 +169,6 @@ app.post("/book_table" , (req,res) => {
 })
 
 
-app.listen(2000, () => {
-    console.log(`Server started at port 2000`)
+app.listen(port, () => {
+    console.log(`Server started at port ${port}`)
 })
