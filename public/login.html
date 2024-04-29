@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <style>
+        body {
+            margin-top: 50px;
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        #createAccountForm {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .credentials {
+            margin-bottom: 20px;
+        }
+
+        .credentials p {
+            margin: 0 0 5px;
+            color: #333;
+        }
+
+        .credentials input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s;
+        }
+
+        .credentials input:focus {
+            border-color: #007bff;
+        }
+
+        .credentials button {
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .credentials button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/create_account" id="createAccountForm" method="post" onsubmit="return   validateForm()">
+        <div class="credentials">
+            <p>Name:</p>
+            <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+        </div>
+
+        <div class="credentials">
+            <p>Address:</p>
+            <input type="text" id="address" name="address" placeholder="Your Address" required>
+        </div>
+
+        <div class="credentials">
+            <p>Email Id:</p>
+            <input type="email" id="email" name="email" placeholder="Your Email Id" required>
+        </div>
+
+        <div class="credentials">
+            <p>Password:</p>
+            <input type="password" id="password" name="password" placeholder="Create password" required>
+        </div>
+
+        <div class="credentials">
+            <button type="submit">Create Account</button>
+        </div>
+    </form>
+
+    <script>
+  
+    function validateForm() {
+        var password = document.getElementById("password").value;
+
+        // Check if the password meets the criteria
+        if (password.length < 8) {
+            alert("Password must be at least 8 characters long");
+            return false;
+        }
+        if (!/[A-Z]/.test(password)) {
+            alert("Password must contain at least one uppercase letter");
+            return false;
+        }
+        if (!/[a-z]/.test(password)) {
+            alert("Password must contain at least one lowercase letter");
+            return false;
+        }
+        if (!/\d/.test(password)) {
+            alert("Password must contain at least one number");
+            return false;
+        }
+        if (!/[^a-zA-Z0-9]/.test(password)) {
+            alert("Password must contain at least one special character");
+            return false;
+        }
+
+        // If all conditions are met, return true to submit the form
+        return true;
+    }
+
+
+    </script>
+
+</body>
+
+</html>
